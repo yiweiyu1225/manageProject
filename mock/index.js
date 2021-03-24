@@ -4,11 +4,26 @@ const { param2Obj } = require('./utils')
 const user = require('./user')
 const table = require('./table')
 const acticle = require('./acticle')
-
+const myProRecordKeep = require('./myProRecordKeep') // 我的项目备案
+const applyProManage = require('./applyProManage') // 申请项目管理
+const proInitExamine = require('./proInitExamine') // 在【申报项目管理】页新增一条项目信息。要求数据准确。
+const ProInitExa = require('./ProInitExa') // 项目备案审核
+const address = require('./address')
+const peoplemanage = require('./management/people')
+const role = require('./management/role')
+const roleauthority = require('./management/roleauthority')
 const mocks = [
   ...user,
   ...table,
-  ...acticle
+  ...acticle,
+  ...myProRecordKeep,
+  ...applyProManage,
+  ...proInitExamine,
+  ...ProInitExa,
+  ...address,
+  ...peoplemanage,
+  ...role,
+  ...roleauthority
 ]
 
 // for front mock

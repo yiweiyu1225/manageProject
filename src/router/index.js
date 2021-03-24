@@ -5,6 +5,7 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '@/layout'
+import ProInitExa from '@/router/modules/ProInitExa'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -38,8 +39,17 @@ export const constantRoutes = [
   },
   {
     path: '/loginIndex',
-    component: () => import('@/views/login/loginIndex'),
-    hidden: true
+    component: Layout,
+    redirect: '/loginIndex',
+    // meta: {
+    //   icon: 'el-icon-d-arrow-right'
+    // },
+    children: [{
+      path: 'loginIndex',
+      name: 'loginIndex',
+      component: () => import('@/views/login/loginIndex'),
+      meta: { title: 'loginIndex' }
+    }]
   },
   {
     path: '/acticle',
@@ -60,7 +70,7 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: 'Dashboard' }
     }]
   },
 
@@ -69,107 +79,148 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/example/table',
     name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    meta: { title: 'Example' },
     children: [
       {
         path: 'table',
         name: 'Table',
         component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        meta: { title: 'Table' }
       },
       {
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        meta: { title: 'Tree' }
       }
     ]
   },
 
+  // {
+  //   path: '/form',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Form',
+  //       component: () => import('@/views/form/index'),
+  //       meta: { title: 'Form' }
+  //     }
+  //   ]
+  // },
   {
-    path: '/form',
+    path: 'register',
     component: Layout,
     children: [
       {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        path: '/index',
+        component: () => import('@/views/register/index'),
+        meta: { title: '注册' }
       }
     ]
-  },
+  }
+]
 
+export const asyncRoutes = [
   {
-    path: '/nested',
+    path: '/personal',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
+    redirect: '/personal/myProRecordKeep',
     meta: {
-      title: 'Nested',
-      icon: 'nested'
+      title: '个人',
+       roles: ['admin', 'editor']
     },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
+        path: 'myProRecordKeep',
+        name: 'myProRecordKeep',
+        component: () => import('@/views/personal/myProRecordKeep/myProRecordKeep'),
+        meta: {
+        title: '我的项目备案',
+        roles: ['admin', 'editor'] }
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
+        path: 'createProject',
+        name: 'createProject',
+        component: () => import('@/views/personal/myProRecordKeep/createProject'),
+        meta: {
+        title: '增加备案',
+        roles: ['admin', 'editor'] },
+        hidden: true
+      },
+      {
+        path: 'editorProject/:id(\\d+)',
+        name: 'editorProject',
+        component: () => import('@/views/personal/myProRecordKeep/editorProject'),
+        meta: {
+        title: '编辑备案',
+        roles: ['admin', 'editor'] },
+        hidden: true
+      },
+      // 申报项目管理
+      {
+        path: 'applyProManage',
+        name: 'applyProManage',
+        component: () => import('@/views/personal/applyProManage/index'),
+        meta: {
+        title: '申报项目管理',
+        roles: ['admin', 'editor'] }
+      },
+      {
+        path: 'proProgress/:id(\\d+)',
+        name: 'proProgress',
+        component: () => import('@/views/personal/applyProManage/proProgress'),
+        meta: {
+        title: '项目跟踪',
+        roles: ['admin', 'editor'] },
+        hidden: true
       }
     ]
   },
-
+  ProInitExa,
   {
-    path: 'external-link',
+    path: '/manage',
     component: Layout,
+    redirect: '/manage/departments',
+    meta: {
+      title: '管理',
+      roles: ['editor']
+    },
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'departments',
+        name: 'departments',
+        component: () => import('@/views/management/department/index'),
+        meta: {
+        title: '部门管理',
+        roles: ['editor'] }
+      },
+      {
+        path: 'people',
+        name: 'people',
+        component: () => import('@/views/management/people/index'),
+        meta: {
+        title: '人员管理',
+        roles: ['editor'] }
+      },
+      {
+        path: 'role',
+        name: 'role',
+        component: () => import('@/views/management/role/index'),
+        meta: {
+        title: '角色分配',
+        roles: ['editor'] }
+      },
+      {
+        path: 'roleauthority',
+        name: 'roleauthority',
+        component: () => import('@/views/management/roleauthority/index'),
+        meta: {
+        title: '角色权限管理',
+        roles: ['editor'] }
       }
     ]
   },
-
-  // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
 

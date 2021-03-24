@@ -1,0 +1,8 @@
+.el-checkbox__input.is-checked .el-checkbox__inner,.el-checkbox__input.is-indeterminate .el-checkbox__inner {
+    background-color: #5BACD1;
+    border-color: #5BACD1;
+}
+
+.el-checkbox__inner {
+    border: 2px solid #DCDFE6;
+}

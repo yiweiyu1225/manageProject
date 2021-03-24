@@ -1,13 +1,12 @@
 import { postActicle } from '@/api/acticle'
 
-
 const actions = {
 
-    postActicle({ commit },userInfo) {
+    postActicle({ commit }, userInfo) {
         // 发起网络请求
-        const { name} = userInfo
+        const { name } = userInfo
         return new Promise((resolve, reject) => {
-            postActicle({name}).then(response => {
+            postActicle({ name }).then(response => {
             const data = response.data.status
             resolve(data)
           }).catch(error => {

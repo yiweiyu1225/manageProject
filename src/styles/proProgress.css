@@ -1,0 +1,11 @@
+/* @backcolor: #F5F7FA;
+@textcolor: #61AEFE; */
+
+.el-step__icon{
+   background: #F5F7FA;
+   color: #61AEFE;
+} 
+
+.el-step__title.is-wait{
+   color: #61AEFE;
+}

@@ -3,6 +3,7 @@
     <template v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow">
       <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
+          <!-- <li class="is-active myIcon" /> -->
           <item :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" :title="onlyOneChild.meta.title" />
         </el-menu-item>
       </app-link>
@@ -10,6 +11,7 @@
 
     <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
       <template slot="title">
+        <!-- <li class="is-active myIcon" /> -->
         <item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="item.meta.title" />
       </template>
       <sidebar-item
@@ -57,6 +59,9 @@ export default {
     return {}
   },
   methods: {
+    newicon(that) {
+      console.log(that.parent.className)
+    },
     hasOneShowingChild(children = [], parent) {
       const showingChildren = children.filter(item => {
         if (item.hidden) {
@@ -93,3 +98,13 @@ export default {
   }
 }
 </script>
+
+<style lang='less' scoped>
+.myIcon{
+  display: inline-block;
+  height: 56px;
+  width: 5px;
+  background-color: #6DB1D2;
+  margin-right: 20px;
+}
+</style>

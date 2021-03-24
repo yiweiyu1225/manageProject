@@ -5,11 +5,11 @@
       <el-menu
         :default-active="activeMenu"
         :collapse="isCollapse"
-        :background-color="variables.menuBg"
-        :text-color="variables.menuText"
         :unique-opened="false"
-        :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
+        :text-color="variables.menuText"
+        :background-color="variables.subMenuBg"
+        :active-text-color="variables.menuActiveText"
         mode="vertical"
       >
         <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
@@ -54,3 +54,6 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+</style>

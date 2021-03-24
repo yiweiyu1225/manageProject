@@ -1,0 +1,108 @@
+.titleTag{
+    display: inline-block;
+    background-color: white;
+    border-top: #83B4D3 3px solid;
+    padding: 8px 10px;
+    margin-left:5px;
+  }
+  .tag{
+    background-color: #F7F8FC;
+  }
+  .functionContain{
+    background-color:#eaedf1;
+  }
+  .findQuiry{
+    height: 40px;
+    line-height: 40px;
+  }
+  .oprate_tab{
+    background-color: #F4F4F4;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 50px;
+    line-height: 50px;
+  }
+  .paging_block{
+    margin: 30px auto;
+  }
+  /* .el-table .table_fron_color{
+    color: #5BACD1;
+  } */
+  
+  .buttonText{
+    border: none;
+    outline: none;
+    background-color:rgba(255,255,255,0);
+    color: #5BACD1;
+    text-decoration:underline;
+    cursor: pointer;
+  }
+  .buttonText:focus{
+    outline:none;
+  }
+  .buttonText:hover{
+    color: #216778;
+  }
+  
+  .buttonTag{
+    border:1px solid #5BACD1;
+    color: #5BACD1;
+    background-color: #E7FAFF;
+    cursor: pointer;
+    margin-left: 30px;
+    height: 1.3em;
+    text-align: center;
+  }
+  .buttonTag:focus{
+    outline:none;
+  }
+  .buttonTag:hover{
+    opacity: 0.8;
+    color: #5BACD1;
+  }
+  /* 查询按钮 */
+  .buttonQuery{
+    border: none;
+    color: white;
+    background-color: #5BACD1;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    height: 30px;
+    line-height: 30px;
+  }
+  .buttonQuery:focus{
+    outline:none;
+  }
+  .buttonQuery:hover{
+    background-color:#216778;
+  }
+  .el-input:focus{
+    outline: aquamarine;
+    border: aquamarine;
+  }
+  .ql-editor {
+    min-height: 350px;
+  }
+
+/* 项目内容的css */
+.proIntruduce{
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  border: 1.7px solid #DCDFE6;
+  border-radius: 10px;
+}
+
+.flexBox{
+  display: flex;
+  padding-right: 20px;
+  padding-left: 20px;
+  justify-content: space-between;
+}
+.flexBox.item{
+  padding-top: 20px;
+}
+
+.inline{
+  display: inline;
+}

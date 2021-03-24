@@ -1,8 +1,21 @@
+// const webpack = require('webpack')
 const { run } = require('runjs')
 const chalk = require('chalk')
 const config = require('../vue.config.js')
 const rawArgv = process.argv.slice(2)
 const args = rawArgv.join(' ')
+
+// module.exports = {
+//   // 添加代码
+//   plugins: [
+//     new webpack.ProvidePlugin({
+//   $: "jquery",
+//   jQuery: "jquery",
+//   jquery: "jquery",
+//   "window.jQuery": "jquery"
+//     })
+//   ]
+// }
 
 if (process.env.npm_config_preview || rawArgv.includes('--preview')) {
   const report = rawArgv.includes('--report')
